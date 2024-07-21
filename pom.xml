@@ -13,21 +13,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>escolar</name>
 	<description>Aplicación de Mensajería Escolar</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
