@@ -24,7 +24,7 @@ import java.util.Arrays;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter authenticationFilter;
-    private final AuthenticationProvider authenticationProvider;
+    //private final AuthenticationProvider authenticationProvider;
 
     /**
      * Configuración del filtro de seguridad y la gestión de sesiones.
@@ -33,6 +33,9 @@ public class SecurityConfig {
      * @return Cadena de filtros de seguridad.
      * @throws Exception Si hay un error al configurar la seguridad HTTP.
      */
+
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
@@ -54,7 +57,7 @@ public class SecurityConfig {
                                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                         }
                 )
-                .authenticationProvider(authenticationProvider)
+                //.authenticationProvider(authenticationProvider)
                 .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return httpSecurity.build();
