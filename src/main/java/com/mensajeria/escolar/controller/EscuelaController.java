@@ -23,25 +23,34 @@ public class EscuelaController {
 
     @PostMapping("/newSchool")
     public ResponseEntity<?> newSchool(@RequestBody EscuelaRequestDto schoolDto){
-        escuelaService.newEscuela(schoolDto);
 
-try {
-    return ResponseEntity.status(HttpStatus.CREATED).body("Escuela creada correctamente");
-} catch (Exception e) {
-    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al crear la escuela");
-}
+        try {
+            escuelaService.newEscuela(schoolDto);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Escuela creada correctamente");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al crear la escuela");
+        }
     }
 
 
 
     @GetMapping("/{id}")
-    public SchoolResponseDto verEscuela(@PathVariable Long id){
-        System.out.println("prueba");
-        return new SchoolResponseDto(escuelaService.verEscuela(id));
+    public ResponseEntity<?>  verEscuela(@PathVariable Long id){
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(new SchoolResponseDto(escuelaService.verEscuela(id)));
+        }catch (Exception e){
+            return new ResponseEntity<>("Error al encontrar la escuela", HttpStatus.NOT_FOUND);
+        }
+
     }
 
     @GetMapping("/all")
-    public List<SchoolsResponseDto> schoolls(){
-        return escuelaService.schools();
+    public ResponseEntity<?> schools(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(escuelaService.schools());
+        }catch (Exception e){
+            return new ResponseEntity<>("Error al encontrar las escuelas", HttpStatus.NOT_FOUND);
+        }
     }
 }

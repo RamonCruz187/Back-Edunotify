@@ -39,7 +39,7 @@ public class UserController {
             Optional<UserResponseDto> userById = userService.getUser(id);
             return ResponseEntity.of(userById);
         }catch (Exception e){
-            return new ResponseEntity<>("Error al encontrar el empleado", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Error al encontrar el usuario", HttpStatus.NOT_FOUND);
         }
     }
 
