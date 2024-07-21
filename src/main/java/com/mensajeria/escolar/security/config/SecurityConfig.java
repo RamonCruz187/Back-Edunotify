@@ -46,13 +46,13 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(
                         auth -> auth
-                                .requestMatchers("/auth/**").permitAll()
-                                .requestMatchers("/school/**").permitAll()
-                                .requestMatchers("/user/**").permitAll()
-                                .requestMatchers("/message/**").permitAll()
-                                .requestMatchers( "/api/v1/**").hasAuthority(RoleName.ADMIN.name())
-                                .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
-                                .anyRequest().authenticated()
+//                                .requestMatchers("/auth/**").permitAll()
+//                                .requestMatchers("/school/**").permitAll()
+//                                .requestMatchers("/user/**").permitAll()
+//                                .requestMatchers("/message/**").permitAll()
+//                                .requestMatchers( "/api/v1/**").hasAuthority(RoleName.ADMIN.name())
+//                                .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                                .anyRequest().permitAll()
                 ).sessionManagement(
                         session -> {
                             session
@@ -65,14 +65,14 @@ public class SecurityConfig {
         return httpSecurity.build();
     }
 
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("*"));
-        configuration.setAllowedMethods(List.of("GET, POST, UPDATE, DELETE, PATCH"));
-        configuration.setAllowedHeaders(List.of("Authorization"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+//    @Bean
+//    CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowedOrigins(Collections.singletonList("*"));
+//        configuration.setAllowedMethods(List.of("GET, POST, UPDATE, DELETE, PATCH"));
+//        configuration.setAllowedHeaders(List.of("Authorization"));
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
+//    }
 }
