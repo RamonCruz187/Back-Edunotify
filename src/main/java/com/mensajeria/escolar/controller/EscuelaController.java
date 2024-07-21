@@ -21,13 +21,15 @@ public class EscuelaController {
     private final EscuelaService escuelaService;
 
 
-    @PostMapping("/new")
+    @PostMapping("/newSchool")
     public ResponseEntity<?> newSchool(@RequestBody EscuelaRequestDto schoolDto){
         escuelaService.newEscuela(schoolDto);
 
-        EscuelaRequestDto response = schoolDto;
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-
+try {
+    return ResponseEntity.status(HttpStatus.CREATED).body("Escuela creada correctamente");
+} catch (Exception e) {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al crear la escuela");
+}
     }
 
 

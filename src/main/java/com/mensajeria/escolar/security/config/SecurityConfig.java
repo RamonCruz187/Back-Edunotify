@@ -53,6 +53,7 @@ public class SecurityConfig {
 //                                .requestMatchers( "/api/v1/**").hasAuthority(RoleName.ADMIN.name())
 //                                .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
                                 .anyRequest().permitAll()
+
                 ).sessionManagement(
                         session -> {
                             session
