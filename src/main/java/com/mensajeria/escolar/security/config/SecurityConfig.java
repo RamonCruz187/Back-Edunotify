@@ -43,16 +43,16 @@ public class SecurityConfig {
 
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(Customizer.withDefaults())
+                //.cors(Customizer.withDefaults())
                 .authorizeHttpRequests(
                         auth -> auth
-//                                .requestMatchers("/auth/**").permitAll()
-//                                .requestMatchers("/school/**").permitAll()
-//                                .requestMatchers("/user/**").permitAll()
-//                                .requestMatchers("/message/**").permitAll()
-//                                .requestMatchers( "/api/v1/**").hasAuthority(RoleName.ADMIN.name())
-//                                .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
-                                .anyRequest().permitAll()
+                                .requestMatchers("/auth/**").permitAll()
+                               .requestMatchers("/school/**").permitAll()
+                                .requestMatchers("/user/**").permitAll()
+                               .requestMatchers("/message/**").permitAll()
+                                .requestMatchers( "/api/v1/**").hasAuthority(RoleName.ADMIN.name())
+                               .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                                //.anyRequest().permitAll()
 
                 ).sessionManagement(
                         session -> {
